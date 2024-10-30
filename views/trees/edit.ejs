@@ -1,0 +1,37 @@
+<form method="POST" enctype="multipart/form-data">
+  <div>
+    <label>Current Image:</label><br />
+    <% if (tree.image) { %>
+    <img
+      class="avatar-sm rounded-circle"
+      src="data:image/png;base64,<%= tree.image %>"
+      width="50"
+      height="50"
+    /><br />
+    <% } %>
+    <label>New Image (optional):</label>
+    <input class="form-control" type="file" name="image" /><br />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="treeName">Tree Name:</label>
+    <input
+      class="form-control"
+      type="text"
+      id="treeName"
+      name="treeName"
+      value="<%= tree.treeName %>"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="description">Description:</label>
+    <input
+      class="form-control"
+      type="text"
+      id="description"
+      name="description"
+      value="<%= tree.description %>"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit">Update</button>
+</form>

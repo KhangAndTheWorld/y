@@ -1,0 +1,32 @@
+<a class="btn btn-primary" href="trees/create">Add a tree</a>
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <% trees.forEach((tree) => { %>
+      <tr>
+        <td>
+          <%= tree.treeName %>
+        </td>
+        <td>
+          <% if (tree.image) { %>
+            <img class="avatar-sm" src="data:image/png;base64,<%= tree.image %>" width="50" height="50" />
+          <% } %>
+        </td>
+        <td>
+          <%= tree.description %>
+        </td>
+        <td>
+          <a href="trees/edit/<%= tree._id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+          <form action="trees/delete/<%= tree._id %>" method="post" style="display:inline;">
+            <button type="submit" onclick="return confirm('Vui lòng xác nhận')"><i class="fa-solid fa-trash"></i></button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
